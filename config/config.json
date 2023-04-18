@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "postgres",
+    "password": "Adrian0421",
+    "database": "music_tour3",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "postgres",
+    "password": "Adrian0421",
+    "database": "music_tour3_test",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "postgres",
+    "password": "Adrian0421",
+    "database": "music_tour3_production",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}
