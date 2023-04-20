@@ -30,6 +30,8 @@ app.get('/', (req, res) => {
 // CONTROLLERS 
 const bandsController = require('./controllers/bands_controllers')
 app.use('/bands', bandsController)
+const eventsController = require('./controllers/event_controller')
+app.use('/events', eventsController)
 
 
 // LISTEN
