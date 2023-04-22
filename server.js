@@ -32,8 +32,8 @@ const bandsController = require('./controllers/bands_controllers')
 app.use('/bands', bandsController)
 const eventsController = require('./controllers/event_controller')
 app.use('/events', eventsController)
-
-
+const stagesController = require('./controllers/stage_controller')
+app.use('/stages', stagesController)
 // LISTEN
 app.listen(process.env.PORT, () => {
     console.log(`🎸 Rockin' on port: ${process.env.PORT}`)
