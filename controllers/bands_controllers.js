@@ -1,7 +1,7 @@
 const bands = require("express").Router();
 // const { DELETE } = require('sequelize/types/query-types');
 const db = require("../models");
-const { Band } = db;
+const { Band, Meet_greet, Set_time, Event } = db;
 const { Op } = require('sequelize');
 
 // CREATE
@@ -36,10 +36,34 @@ bands.get("/", async (req, res) => {
   }
 });
 // FIND A SPECIFIC BAND
-bands.get("/:id", async (req, res) => {
+bands.get("/:name", async (req, res) => {
   try {
     const foundBand = await Band.findOne({
-      where: { Band_id: req.params.id },
+      where: { name: req.params.name },
+      include: [
+        {
+        model: Meet_greet,
+        as: "meet_greet",
+        // attributes: { exclude: ["band_id", "event_id"] },
+        include: { 
+          model: Event,
+          as: "event", 
+          where: { name: { [Op.like]: `%${req.query.event ? req.query.event : ''}%` } }
+        }
+        },
+        {
+          model: Set_time,
+          as: "set_times",
+          // attributes: { exclude: ["band_id", "event_id"] },
+          include: {
+            module: "Event",
+            as: "event",
+            where: { name: { [Op.like]: `%${req.query.event ? req.query.event : ''}%` } } 
+          }
+
+        },
+
+      ]
     });
     res.status(200).json(foundBand);
   } catch (error) {
