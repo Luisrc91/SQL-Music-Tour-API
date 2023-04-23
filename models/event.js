@@ -16,13 +16,13 @@ module.exports = (sequelize, DataTypes) => {
         // meet and greets 
         Event.hasMany(MeetGreet, {
           foreignKey: 'event_id',
-          as: 'meet_greets'
+          as: 'Meet_greets'
         })
   
         // set times 
         Event.hasMany(SetTime, {
           foreignKey: 'event_id',
-          as: 'set_times'
+          as: 'Set_times'
         })
       // define association here
     }

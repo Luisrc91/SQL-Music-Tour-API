@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
       });
       MeetGreet.belongsTo(Event, {
         foreignKey: "event_id",
-        as: "event",
+        as: "Event",
       });
     }
   }

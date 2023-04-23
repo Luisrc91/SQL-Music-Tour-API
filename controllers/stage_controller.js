@@ -38,9 +38,15 @@ stage.get("/:name", async (req, res) => {
       include: { 
         model: Event,
         as: 'events',
-        through: Stage_event
+        attributes: ['name', 'date'],
 
-    }});
+        through: { attributes: [] },
+
+
+    },
+    attributes: { exclude: ['stage_id'] },
+			order: [[{ model: Event, as: 'events' }, 'date', 'ASC']],
+  });
     res.status(200).json(foundStage);
   } catch (error) {
     res.status(500).json(error);
@@ -52,7 +58,7 @@ stage.put("/:id", async (req, res) => {
   try {
     const updatedStages = await Stage.update(req.body, {
       where: {
-        stage_name: req.params.id,
+        stage_id: req.params.id,
       },
     });
     res.status(200).json({

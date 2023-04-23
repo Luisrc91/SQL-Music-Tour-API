@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate({ Band, Event, Stage }) {
       SetTime.belongsTo(Band,{
         // through: Event,
-        foreignKey: 'band_id',
+        foreignKey: 'Band_id',
         as: 'band',
       })
       SetTime.belongsTo(Event,{
